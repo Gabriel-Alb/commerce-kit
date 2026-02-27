@@ -18,7 +18,7 @@
         <a
           href="#"
           class="flex items-center gap-3"
-          aria-label="CommerceKit - Ir para o topo"
+          aria-label="CommerceKit - Back to top"
         >
           <div
             class="grid h-9 w-9 place-items-center rounded-xl border border-violet-400/30 bg-white/5 shadow-[0_8px_24px_rgba(139,92,246,0.15)]"
@@ -31,14 +31,14 @@
             <p class="text-sm font-semibold tracking-tight text-white">
               CommerceKit
             </p>
-            <p class="text-[11px] text-slate-400">premium store experience</p>
+            <p class="text-[11px] text-slate-400">consumer electronics store</p>
           </div>
         </a>
 
         <!-- Nav desktop -->
         <nav
           class="hidden items-center gap-7 md:flex"
-          aria-label="Navegação principal"
+          aria-label="Primary navigation"
         >
           <a
             v-for="item in navItems"
@@ -57,7 +57,9 @@
               ? 'border-white/10 bg-white/5 text-slate-200 hover:border-violet-400/30 hover:bg-violet-500/10 focus:ring-2 focus:ring-violet-400/30'
               : 'border-slate-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50 focus:ring-2 focus:ring-violet-200'
           "
-          :aria-label="isDark ? 'Ativar tema claro' : 'Ativar tema escuro'"
+          :aria-label="
+            isDark ? 'Switch to light theme' : 'Switch to dark theme'
+          "
           @click="toggleTheme"
         >
           <span
@@ -74,7 +76,7 @@
           <button
             type="button"
             class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-            aria-label="Buscar"
+            aria-label="Search"
           >
             <span class="mdi mdi-magnify text-[20px]" />
           </button>
@@ -82,7 +84,7 @@
           <button
             type="button"
             class="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-            aria-label="Carrinho"
+            aria-label="Cart"
           >
             <span class="mdi mdi-cart-outline text-[20px]" />
             <span
@@ -96,7 +98,7 @@
             type="button"
             class="hidden rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white shadow-[0_8px_20px_rgba(139,92,246,0.25)] transition hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30 md:inline-flex"
           >
-            Entrar
+            Sign in
           </button>
 
           <!-- Mobile menu button -->
@@ -105,7 +107,7 @@
             class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30 md:hidden"
             :aria-expanded="isMobileMenuOpen ? 'true' : 'false'"
             aria-controls="mobile-menu"
-            aria-label="Abrir menu"
+            aria-label="Open menu"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <span
@@ -127,7 +129,7 @@
       >
         <nav
           class="mx-auto flex max-w-7xl flex-col px-4 py-3 sm:px-6"
-          aria-label="Navegação mobile"
+          aria-label="Mobile navigation"
         >
           <a
             v-for="item in navItems"
@@ -143,7 +145,7 @@
             type="button"
             class="mt-2 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-sm font-medium text-white transition hover:from-violet-400 hover:to-fuchsia-400"
           >
-            Entrar
+            Sign in
           </button>
         </nav>
       </div>
@@ -167,21 +169,20 @@
             class="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-white/5 px-3 py-1 text-xs font-medium text-violet-200 shadow-sm"
           >
             <span class="mdi mdi-star-four-points-outline text-sm" />
-            Nova coleção • Design autoral • Curadoria premium
+            New arrivals • Top-rated picks • Limited-time deals
           </p>
 
           <h1
             class="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            E-commerce com estética premium e performance real.
+            Upgrade your everyday tech in one place.
           </h1>
 
           <p
             class="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg"
           >
-            Descubra produtos com design moderno, acabamento impecável e
-            experiência de compra pensada nos detalhes — do primeiro clique ao
-            checkout.
+            Shop headphones, wearables, keyboards, and essentials with fast
+            shipping, secure checkout, and support that actually answers.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -189,7 +190,7 @@
               type="button"
               class="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-3 text-sm font-medium text-white shadow-[0_12px_28px_rgba(139,92,246,0.28)] transition hover:-translate-y-0.5 hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
             >
-              Explorar coleção
+              Shop new arrivals
               <span class="mdi mdi-arrow-right text-base" />
             </button>
 
@@ -197,7 +198,7 @@
               type="button"
               class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
             >
-              Ver lançamentos
+              View best sellers
               <span class="mdi mdi-play-circle-outline text-base" />
             </button>
           </div>
@@ -209,19 +210,19 @@
               <p class="text-2xl font-semibold tracking-tight text-white">
                 +12k
               </p>
-              <p class="text-xs text-slate-400">Clientes satisfeitos</p>
+              <p class="text-xs text-slate-400">Happy customers</p>
             </div>
             <div>
               <p class="text-2xl font-semibold tracking-tight text-white">
                 4.9
               </p>
-              <p class="text-xs text-slate-400">Avaliação média</p>
+              <p class="text-xs text-slate-400">Average rating</p>
             </div>
             <div>
               <p class="text-2xl font-semibold tracking-tight text-white">
                 24h
               </p>
-              <p class="text-xs text-slate-400">Envio prioritário</p>
+              <p class="text-xs text-slate-400">Priority dispatch</p>
             </div>
           </div>
         </div>
@@ -244,13 +245,15 @@
               />
               <div class="mt-4">
                 <p class="text-sm font-medium text-white">Headphones Pro X</p>
-                <p class="text-sm text-slate-400">Áudio imersivo • ANC</p>
+                <p class="text-sm text-slate-400">
+                  Spatial audio • Active noise cancelling
+                </p>
                 <div class="mt-3 flex items-center justify-between">
                   <span class="text-sm font-semibold text-white">R$ 1.299</span>
                   <button
                     type="button"
                     class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-                    aria-label="Adicionar Headphones Pro X"
+                    aria-label="Add Headphones Pro X"
                   >
                     <span class="mdi mdi-plus text-lg" />
                   </button>
@@ -267,7 +270,9 @@
                 />
                 <div class="mt-4">
                   <p class="text-sm font-medium text-white">Smartwatch One</p>
-                  <p class="text-sm text-slate-400">Saúde • Rotina • Estilo</p>
+                  <p class="text-sm text-slate-400">
+                    Health tracking • Workouts • Notifications
+                  </p>
                   <p class="mt-2 text-sm font-semibold text-white">R$ 899</p>
                 </div>
               </div>
@@ -276,16 +281,16 @@
                 class="rounded-3xl border border-violet-300/20 bg-gradient-to-br from-violet-600/25 to-fuchsia-600/25 p-5 text-white shadow-sm backdrop-blur"
               >
                 <p class="text-xs uppercase tracking-[0.16em] text-white/70">
-                  Oferta da semana
+                  Deal of the week
                 </p>
                 <p class="mt-2 text-lg font-medium leading-tight">
-                  Até 30% OFF em acessórios selecionados.
+                  Up to 30% off selected accessories.
                 </p>
                 <button
                   type="button"
                   class="mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-medium text-violet-700 transition hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-white/30"
                 >
-                  Aproveitar
+                  Shop deals
                   <span class="mdi mdi-arrow-top-right text-base" />
                 </button>
               </div>
@@ -301,7 +306,7 @@
         <p
           class="mb-4 text-center text-xs font-medium uppercase tracking-[0.14em] text-slate-400"
         >
-          Marcas e parceiros em destaque
+          Featured brands and partners
         </p>
         <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           <div
@@ -317,16 +322,16 @@
 
     <!-- CATEGORIES -->
     <section
-      id="categorias"
+      id="categories"
       class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
     >
       <div class="mb-8 flex items-end justify-between gap-4">
         <div>
-          <p class="text-sm font-medium text-violet-300">Categorias</p>
+          <p class="text-sm font-medium text-violet-300">Categories</p>
           <h2
             class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
           >
-            Explore por estilo de uso
+            Shop by category
           </h2>
         </div>
 
@@ -334,7 +339,7 @@
           type="button"
           class="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30 sm:inline-flex"
         >
-          Ver tudo
+          View all
           <span class="mdi mdi-arrow-right text-base" />
         </button>
       </div>
@@ -360,7 +365,7 @@
 
           <div class="mt-4 flex items-center justify-between">
             <span class="text-xs font-medium text-slate-400"
-              >{{ category.items }} itens</span
+              >{{ category.items }} items</span
             >
             <span
               class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition group-hover:border-violet-400 group-hover:bg-violet-500 group-hover:text-white"
@@ -374,17 +379,17 @@
 
     <!-- FEATURED PRODUCTS -->
     <section
-      id="destaques"
+      id="featured"
       class="bg-gradient-to-b from-transparent to-violet-500/[0.04]"
     >
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p class="text-sm font-medium text-violet-300">Destaques</p>
+            <p class="text-sm font-medium text-violet-300">Featured</p>
             <h2
               class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
             >
-              Produtos em alta
+              Trending now
             </h2>
           </div>
 
@@ -392,14 +397,14 @@
             <button
               type="button"
               class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-              aria-label="Anterior"
+              aria-label="Previous"
             >
               <span class="mdi mdi-chevron-left text-lg" />
             </button>
             <button
               type="button"
               class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-              aria-label="Próximo"
+              aria-label="Next"
             >
               <span class="mdi mdi-chevron-right text-lg" />
             </button>
@@ -423,7 +428,7 @@
               <button
                 type="button"
                 class="absolute right-4 top-4 z-10 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-sm transition hover:border-pink-300/20 hover:bg-pink-500/10 hover:text-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400/30"
-                :aria-label="`Favoritar ${product.name}`"
+                :aria-label="`Add ${product.name} to wishlist`"
               >
                 <span class="mdi mdi-heart-outline text-lg" />
               </button>
@@ -470,7 +475,7 @@
                   class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-3 py-2 text-sm font-medium text-white transition hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
                 >
                   <span class="mdi mdi-cart-plus text-base" />
-                  Comprar
+                  Add to cart
                 </button>
               </div>
             </div>
@@ -480,24 +485,20 @@
     </section>
 
     <!-- FEATURE / SPLIT SECTION -->
-    <section
-      id="novidades"
-      class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
-    >
+    <section id="new" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="grid gap-6 lg:grid-cols-2">
         <div
           class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur sm:p-8"
         >
-          <p class="text-sm font-medium text-violet-300">Coleção premium</p>
+          <p class="text-sm font-medium text-violet-300">Curated picks</p>
           <h2
             class="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
           >
-            Design sofisticado, experiência sem fricção.
+            Premium gear, built for real life.
           </h2>
           <p class="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
-            Produtos selecionados com foco em acabamento, durabilidade e
-            estética contemporânea. Ideal para quem busca funcionalidade e
-            presença visual no dia a dia.
+            Thoughtfully selected electronics with reliable build quality and
+            modern design—made for work, travel, and everything in between.
           </p>
 
           <ul class="mt-6 space-y-3">
@@ -505,19 +506,19 @@
               <span
                 class="mdi mdi-check-circle-outline mt-0.5 text-lg text-violet-300"
               />
-              Curadoria com foco em estilo e performance.
+              Trusted picks focused on durability and performance.
             </li>
             <li class="flex items-start gap-3 text-sm text-slate-200">
               <span
                 class="mdi mdi-check-circle-outline mt-0.5 text-lg text-violet-300"
               />
-              Checkout rápido e otimizado para mobile.
+              Fast, mobile-first checkout with secure payments.
             </li>
             <li class="flex items-start gap-3 text-sm text-slate-200">
               <span
                 class="mdi mdi-check-circle-outline mt-0.5 text-lg text-violet-300"
               />
-              Pós-venda com suporte dedicado.
+              Dedicated support before and after your purchase.
             </li>
           </ul>
 
@@ -526,14 +527,14 @@
               type="button"
               class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2.5 text-sm font-medium text-white transition hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
             >
-              Comprar agora
+              Shop now
               <span class="mdi mdi-arrow-right text-base" />
             </button>
             <button
               type="button"
               class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
             >
-              Saiba mais
+              Learn more
               <span class="mdi mdi-information-outline text-base" />
             </button>
           </div>
@@ -544,11 +545,11 @@
             class="rounded-3xl border border-violet-300/20 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 p-6 text-white shadow-sm backdrop-blur"
           >
             <p class="text-xs uppercase tracking-[0.14em] text-white/70">
-              Entrega
+              Shipping
             </p>
-            <p class="mt-2 text-2xl font-semibold tracking-tight">Expressa</p>
+            <p class="mt-2 text-2xl font-semibold tracking-tight">Express</p>
             <p class="mt-3 text-sm leading-6 text-white/80">
-              Frete rápido para regiões selecionadas com rastreio em tempo real.
+              Fast delivery to selected regions with real-time tracking updates.
             </p>
             <div
               class="mt-6 h-32 rounded-2xl border border-white/10 bg-white/5"
@@ -559,13 +560,13 @@
             class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur"
           >
             <p class="text-xs uppercase tracking-[0.14em] text-slate-400">
-              Pagamento
+              Payments
             </p>
             <p class="mt-2 text-2xl font-semibold tracking-tight text-white">
-              Flexível
+              Flexible
             </p>
             <p class="mt-3 text-sm leading-6 text-slate-300">
-              Pix, cartão, boleto e parcelamento em condições especiais.
+              PIX, cards, boleto, and installment options where available.
             </p>
             <div
               class="mt-6 h-32 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900"
@@ -580,16 +581,16 @@
             >
               <div>
                 <p class="text-xs uppercase tracking-[0.14em] text-slate-400">
-                  Benefício exclusivo
+                  Member benefit
                 </p>
                 <p
                   class="mt-2 text-2xl font-semibold tracking-tight text-white"
                 >
-                  Membros ganham acesso antecipado
+                  Early access to drops and deals
                 </p>
                 <p class="mt-3 max-w-xl text-sm leading-6 text-slate-300">
-                  Receba lançamentos, ofertas sazonais e coleções limitadas
-                  antes da liberação geral.
+                  Get notified about launches, seasonal offers, and limited
+                  releases before they go public.
                 </p>
               </div>
 
@@ -597,7 +598,7 @@
                 type="button"
                 class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
               >
-                Entrar na lista
+                Join the list
                 <span class="mdi mdi-email-outline text-base" />
               </button>
             </div>
@@ -607,14 +608,14 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="depoimentos" class="bg-white/[0.02]">
+    <section id="reviews" class="bg-white/[0.02]">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="mb-8">
-          <p class="text-sm font-medium text-violet-300">Depoimentos</p>
+          <p class="text-sm font-medium text-violet-300">Reviews</p>
           <h2
             class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
           >
-            O que os clientes dizem
+            What customers say
           </h2>
         </div>
 
@@ -663,24 +664,24 @@
             <h2
               class="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
             >
-              Receba novidades e ofertas selecionadas.
+              Get updates and member-only offers.
             </h2>
             <p
               class="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base"
             >
-              Assine para acompanhar lançamentos, drops especiais e conteúdos
-              com curadoria de design e tecnologia.
+              Subscribe for new releases, deal alerts, and curated product picks
+              across audio, wearables, and workspace essentials.
             </p>
           </div>
 
           <form class="space-y-3" @submit.prevent="handleNewsletterSubmit">
             <div class="flex flex-col gap-3 sm:flex-row">
-              <label for="newsletter-email" class="sr-only">E-mail</label>
+              <label for="newsletter-email" class="sr-only">Email</label>
               <input
                 id="newsletter-email"
                 v-model="newsletterEmail"
                 type="email"
-                placeholder="Seu melhor e-mail"
+                placeholder="Your email address"
                 class="h-12 w-full rounded-2xl border border-white/10 bg-slate-900/70 px-4 text-sm text-white outline-none ring-0 placeholder:text-slate-500 focus:border-violet-300/30 focus:ring-2 focus:ring-violet-400/20"
                 required
               />
@@ -688,13 +689,13 @@
                 type="submit"
                 class="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 text-sm font-medium text-white transition hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
               >
-                Assinar
+                Subscribe
                 <span class="mdi mdi-arrow-right text-base" />
               </button>
             </div>
             <p class="text-xs leading-5 text-slate-400">
-              Ao assinar, você concorda com nossa política de privacidade e
-              comunicações promocionais.
+              By subscribing, you agree to our privacy policy and promotional
+              communications.
             </p>
           </form>
         </div>
@@ -719,73 +720,77 @@
               <p class="text-sm font-semibold tracking-tight text-white">
                 CommerceKit
               </p>
-              <p class="text-[11px] text-slate-400">premium store experience</p>
+              <p class="text-[11px] text-slate-400">
+                consumer electronics store
+              </p>
             </div>
           </div>
           <p class="mt-4 text-sm leading-6 text-slate-400">
-            Experiência de e-commerce moderna, elegante e orientada a
-            performance.
+            Electronics made easy: curated products, secure checkout, and fast
+            shipping—built for everyday use.
           </p>
         </div>
 
         <div>
-          <h3 class="text-sm font-semibold text-white">Loja</h3>
+          <h3 class="text-sm font-semibold text-white">Shop</h3>
           <ul class="mt-4 space-y-2 text-sm text-slate-400">
             <li>
-              <a href="#" class="transition hover:text-violet-300">Novidades</a>
-            </li>
-            <li>
               <a href="#" class="transition hover:text-violet-300"
-                >Mais vendidos</a
+                >New arrivals</a
               >
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Coleções</a>
+              <a href="#" class="transition hover:text-violet-300"
+                >Best sellers</a
+              >
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Ofertas</a>
+              <a href="#" class="transition hover:text-violet-300"
+                >Collections</a
+              >
+            </li>
+            <li>
+              <a href="#" class="transition hover:text-violet-300">Deals</a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-sm font-semibold text-white">Suporte</h3>
+          <h3 class="text-sm font-semibold text-white">Support</h3>
           <ul class="mt-4 space-y-2 text-sm text-slate-400">
             <li>
               <a href="#" class="transition hover:text-violet-300"
-                >Central de ajuda</a
+                >Help Center</a
               >
             </li>
             <li>
               <a href="#" class="transition hover:text-violet-300"
-                >Trocas e devoluções</a
+                >Returns & exchanges</a
               >
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Entregas</a>
+              <a href="#" class="transition hover:text-violet-300">Shipping</a>
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Contato</a>
+              <a href="#" class="transition hover:text-violet-300">Contact</a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-sm font-semibold text-white">Institucional</h3>
+          <h3 class="text-sm font-semibold text-white">Company</h3>
           <ul class="mt-4 space-y-2 text-sm text-slate-400">
             <li>
-              <a href="#" class="transition hover:text-violet-300">Sobre</a>
+              <a href="#" class="transition hover:text-violet-300">About</a>
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Carreiras</a>
+              <a href="#" class="transition hover:text-violet-300">Careers</a>
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300"
-                >Privacidade</a
-              >
+              <a href="#" class="transition hover:text-violet-300">Privacy</a>
             </li>
             <li>
-              <a href="#" class="transition hover:text-violet-300">Termos</a>
+              <a href="#" class="transition hover:text-violet-300">Terms</a>
             </li>
           </ul>
         </div>
@@ -795,7 +800,7 @@
         <div
           class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-slate-400 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8"
         >
-          <p>© 2026 CommerceKit. Todos os direitos reservados.</p>
+          <p>© 2026 CommerceKit. All rights reserved.</p>
           <div class="flex items-center gap-3">
             <a href="#" class="transition hover:text-violet-300">Instagram</a>
             <span>•</span>
@@ -814,7 +819,7 @@ import { ref, onMounted, watch } from "vue";
 
 const isMobileMenuOpen = ref(false);
 const newsletterEmail = ref("");
-const isDark = ref(true); // começa no dark
+const isDark = ref(true); // starts in dark
 
 function toggleTheme() {
   isDark.value = !isDark.value;
@@ -831,37 +836,40 @@ watch(isDark, (value) => {
 });
 
 const navItems = [
-  { label: "Novidades", href: "#novidades" },
-  { label: "Categorias", href: "#categorias" },
-  { label: "Destaques", href: "#destaques" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "New", href: "#new" },
+  { label: "Categories", href: "#categories" },
+  { label: "Featured", href: "#featured" },
+  { label: "Reviews", href: "#reviews" },
 ];
 
 const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
 
 const categories = [
   {
-    title: "Áudio",
+    title: "Audio",
     description:
-      "Fones, caixas e acessórios para uma experiência sonora premium.",
+      "Headphones, speakers, and accessories for clear sound and deep bass.",
     items: 42,
     icon: "mdi-headphones",
   },
   {
     title: "Wearables",
-    description: "Relógios e dispositivos para rotina, saúde e produtividade.",
+    description:
+      "Smartwatches and fitness devices for health tracking and daily convenience.",
     items: 28,
     icon: "mdi-watch-variant",
   },
   {
     title: "Workspace",
-    description: "Itens para setup moderno, confortável e minimalista.",
+    description:
+      "Keyboards, mice, and desk essentials for a clean and productive setup.",
     items: 35,
     icon: "mdi-monitor-dashboard",
   },
   {
-    title: "Lifestyle",
-    description: "Produtos versáteis para mobilidade, estilo e dia a dia.",
+    title: "Accessories",
+    description:
+      "Cables, chargers, hubs, and everyday add-ons that keep you powered.",
     items: 51,
     icon: "mdi-briefcase-outline",
   },
@@ -870,10 +878,10 @@ const categories = [
 const featuredProducts = [
   {
     id: 1,
-    badge: "Novo",
-    category: "Áudio",
+    badge: "New",
+    category: "Audio",
     name: "Headphones Pro X",
-    rating: "(324 avaliações)",
+    rating: "(324 reviews)",
     price: "R$ 1.299",
     oldPrice: "R$ 1.499",
   },
@@ -882,24 +890,24 @@ const featuredProducts = [
     badge: "Best Seller",
     category: "Wearables",
     name: "Smartwatch One",
-    rating: "(198 avaliações)",
+    rating: "(198 reviews)",
     price: "R$ 899",
   },
   {
     id: 3,
-    badge: "Oferta",
+    badge: "Deal",
     category: "Workspace",
     name: "Keyboard Air Slim",
-    rating: "(276 avaliações)",
+    rating: "(276 reviews)",
     price: "R$ 549",
     oldPrice: "R$ 699",
   },
   {
     id: 4,
     badge: "",
-    category: "Lifestyle",
+    category: "Accessories",
     name: "Bag Urban Pro",
-    rating: "(143 avaliações)",
+    rating: "(143 reviews)",
     price: "R$ 429",
   },
 ];
@@ -907,21 +915,21 @@ const featuredProducts = [
 const testimonials = [
   {
     name: "Marina Oliveira",
-    role: "Designer de Produto",
+    role: "Product Designer",
     comment:
-      "A experiência é impecável. O visual da loja é lindo, os produtos são bem apresentados e o checkout é muito fluido.",
+      "Fast checkout, great product details, and the delivery updates were spot on. The whole experience feels well thought out.",
   },
   {
     name: "Rafael Costa",
-    role: "Desenvolvedor Front-end",
+    role: "Front-end Developer",
     comment:
-      "Curti muito a navegação e o cuidado nos detalhes. Passa uma sensação premium de ponta a ponta.",
+      "Smooth navigation and a clean layout. I found what I needed quickly and the purchase flow was straightforward.",
   },
   {
     name: "Isabela Martins",
-    role: "Arquiteta",
+    role: "Architect",
     comment:
-      "Comprei pela estética e voltei pela praticidade. Entrega rápida, embalagem excelente e ótima comunicação.",
+      "The packaging was excellent and shipping was quick. I’ll definitely come back for accessories and gifts.",
   },
 ];
 
@@ -932,26 +940,26 @@ function handleNewsletterSubmit() {
 </script>
 
 <style scoped>
-
 .theme-light {
-  --ck-bg: #f8fafc;            /* slate-50 */
+  --ck-bg: #f8fafc; /* slate-50 */
   --ck-surface: #ffffff;
   --ck-surface-soft: #f8fafc;
-  --ck-border: #e2e8f0;        /* slate-200 */
-  --ck-text: #0f172a;          /* slate-900 */
-  --ck-text-muted: #64748b;    /* slate-500 */
-  --ck-accent: #8b5cf6;        /* violet-500 */
-  --ck-accent-2: #d946ef;      /* fuchsia-500 */
+  --ck-border: #e2e8f0; /* slate-200 */
+  --ck-text: #0f172a; /* slate-900 */
+  --ck-text-muted: #64748b; /* slate-500 */
+  --ck-accent: #8b5cf6; /* violet-500 */
+  --ck-accent-2: #d946ef; /* fuchsia-500 */
   --ck-glow-1: rgba(139, 92, 246, 0.12);
-  --ck-glow-2: rgba(217, 70, 239, 0.10);
-  --ck-card-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px rgba(15, 23, 42, 0.06);
+  --ck-glow-2: rgba(217, 70, 239, 0.1);
+  --ck-card-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .theme-dark {
   --ck-bg: #020617;
   --ck-surface: rgba(255, 255, 255, 0.05);
   --ck-surface-soft: rgba(255, 255, 255, 0.03);
-  --ck-border: rgba(255, 255, 255, 0.10);
+  --ck-border: rgba(255, 255, 255, 0.1);
   --ck-text: #f8fafc;
   --ck-text-muted: #94a3b8;
   --ck-accent: #8b5cf6;
@@ -961,13 +969,12 @@ function handleNewsletterSubmit() {
   --ck-card-shadow: 0 8px 24px rgba(2, 6, 23, 0.18);
 }
 
-
 .theme-light header {
   border-color: rgba(226, 232, 240, 0.9) !important;
   background: rgba(248, 250, 252, 0.82) !important;
 }
 
-/* Cards, blocos, superfícies “glass” */
+/* Cards, blocks, “glass” surfaces */
 .theme-light :deep(.bg-white\/5),
 .theme-light :deep(.bg-white\/\[0\.02\]),
 .theme-light :deep(.bg-black\/30) {
@@ -997,7 +1004,7 @@ function handleNewsletterSubmit() {
   color: #94a3b8 !important;
 }
 
-/* Botões e inputs dark específicos */
+/* Dark-specific buttons/inputs */
 .theme-light :deep(.bg-slate-900\/70) {
   background-color: #ffffff !important;
 }
@@ -1008,16 +1015,21 @@ function handleNewsletterSubmit() {
   --tw-gradient-to: rgb(226 232 240 / 1) var(--tw-gradient-to-position) !important;
 }
 
-/* Seções que tinham fundo escuro */
-.theme-light :deep(.bg-gradient-to-b.from-transparent.to-violet-500\/\[0\.04\]) {
-  background-image: linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.03)) !important;
+/* Sections that had dark backgrounds */
+.theme-light
+  :deep(.bg-gradient-to-b.from-transparent.to-violet-500\/\[0\.04\]) {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(139, 92, 246, 0.03)
+  ) !important;
 }
 
 .theme-light :deep(.bg-white\/\[0\.02\]) {
   background-color: rgba(255, 255, 255, 0.55) !important;
 }
 
-/* Footer em light */
+/* Footer in light */
 .theme-light footer {
   background: #ffffff !important;
   border-top-color: #e2e8f0 !important;
@@ -1035,12 +1047,14 @@ function handleNewsletterSubmit() {
   color: #0f172a !important;
 }
 
-/* Sombras mais elegantes no light */
+/* More elegant shadows in light */
 .theme-light :deep(.shadow-sm) {
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 20px rgba(15, 23, 42, 0.05) !important;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 6px 20px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Hover states com melhor contraste no light */
+/* Hover states with better contrast in light */
 .theme-light :deep(.hover\:bg-violet-500\/10:hover) {
   background-color: rgba(139, 92, 246, 0.08) !important;
 }
@@ -1050,12 +1064,12 @@ function handleNewsletterSubmit() {
   border-color: rgba(139, 92, 246, 0.28) !important;
 }
 
-/* Hero radial / brilho no light */
+/* Hero radial / glow in light */
 .theme-light section:first-of-type > .absolute.inset-0 {
   opacity: 0.9;
 }
 
-/* Inputs no light */
+/* Inputs in light */
 .theme-light input {
   color: #0f172a !important;
   border-color: #e2e8f0 !important;
@@ -1066,7 +1080,7 @@ function handleNewsletterSubmit() {
   color: #94a3b8 !important;
 }
 
-/* Ajuste de textos com opacity branca no light */
+/* Text with white opacity adjustments in light */
 .theme-light :deep(.text-white\/70) {
   color: rgba(15, 23, 42, 0.65) !important;
 }
@@ -1074,11 +1088,11 @@ function handleNewsletterSubmit() {
   color: rgba(15, 23, 42, 0.78) !important;
 }
 
-/* Elementos decorativos */
+/* Decorative elements */
 .theme-light :deep(.bg-violet-500\/20) {
   background-color: rgba(139, 92, 246, 0.12) !important;
 }
 .theme-light :deep(.bg-fuchsia-500\/20) {
-  background-color: rgba(217, 70, 239, 0.10) !important;
+  background-color: rgba(217, 70, 239, 0.1) !important;
 }
 </style>
