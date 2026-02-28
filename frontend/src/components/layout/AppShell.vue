@@ -14,7 +14,7 @@
 
 <script setup>
 import { computed } from "vue";
-import { useTheme } from "@/composables/useTheme";
+import { useTheme } from "../../composables/useTheme";
 
 const props = defineProps({
   persistKey: { type: String, default: "commercekit-theme" },

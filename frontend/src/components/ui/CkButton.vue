@@ -2,182 +2,295 @@
   <component
     :is="tag"
     :type="isButton ? type : undefined"
-    :href="!isButton ? href : undefined"
-    :disabled="isButton ? isDisabled : undefined"
-    :aria-disabled="!isButton ? String(isDisabled) : undefined"
+    :href="tag === 'a' ? href : undefined"
+    :disabled="isButton ? disabled || loading : undefined"
     :aria-label="computedAriaLabel"
-    :class="[
-      baseClasses,
-      layoutClasses,
-      sizeClass,
-      variantClass,
-      block ? 'w-full' : '',
-      isDisabled ? 'opacity-60 cursor-not-allowed hover:translate-y-0' : '',
-      className,
-    ]"
-    @click="onClick"
+    :aria-busy="loading ? 'true' : undefined"
+    :class="rootClass"
+    v-bind="$attrs"
   >
-    <template v-if="variant === 'icon'">
-      <span
-        v-if="loading"
-        class="mdi mdi-loading inline-flex animate-spin text-[20px]"
-        aria-hidden="true"
-      />
-      <span
-        v-else-if="icon"
-        :class="['mdi inline-flex text-[20px]', icon]"
-        aria-hidden="true"
-      />
-      <slot v-else />
+    <span v-if="loading" class="inline-flex items-center">
+      <span class="ck-spinner" aria-hidden="true" />
+    </span>
 
-      <span
-        v-if="badge !== null && badge !== undefined"
-        class="absolute -right-1 -top-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-violet-500 px-1 text-[10px] font-semibold text-white shadow-sm"
-      >
-        {{ formattedBadge }}
-      </span>
-    </template>
+    <span
+      v-else-if="hasLeftIcon"
+      class="inline-flex items-center"
+      aria-hidden="true"
+    >
+      <slot name="left">
+        <span :class="['mdi', iconLeft, iconClass]" />
+      </slot>
+    </span>
 
-    <template v-else>
-      <span
-        v-if="loading"
-        class="mdi mdi-loading inline-flex animate-spin text-[18px]"
-        aria-hidden="true"
-      />
+    <span v-if="hasLabel" :class="labelClass">
+      <slot />
+    </span>
 
-      <span
-        v-else-if="iconLeft"
-        :class="['mdi inline-flex text-[18px]', iconLeft]"
-        aria-hidden="true"
-      />
-
-      <span v-if="$slots.default" class="inline-flex items-center">
-        <slot />
-      </span>
-
-      <span
-        v-if="iconRight && !loading"
-        :class="['mdi inline-flex text-[18px]', iconRight]"
-        aria-hidden="true"
-      />
-    </template>
+    <span
+      v-if="hasRightIcon"
+      class="inline-flex items-center"
+      aria-hidden="true"
+    >
+      <slot name="right">
+        <span :class="['mdi', iconRight, iconClass]" />
+      </slot>
+    </span>
   </component>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, useSlots } from "vue";
 
-const emit = defineEmits(["click"]);
+defineOptions({ inheritAttrs: false });
 
 const props = defineProps({
-  tag: { type: String, default: "button" }, // 'button' | 'a'
+  as: { type: String, default: "button" },
   href: { type: String, default: "" },
   type: { type: String, default: "button" },
+
+  tone: {
+    type: String,
+    default: "",
+    validator: (v) => ["", "dark", "light"].includes(v),
+  },
+
   variant: {
     type: String,
-    default: "primary",
-    validator: (v) => ["primary", "glass", "icon"].includes(v),
+    default: "secondary",
+    validator: (v) =>
+      [
+        "primary",
+        "secondary",
+        "outline",
+        "ghost",
+        "soft",
+        "icon",
+        "danger",
+        "link",
+        "header-toggle",
+        "header-icon",
+        "header-primary",
+      ].includes(v),
   },
+
   size: {
     type: String,
     default: "md",
-    validator: (v) => ["sm", "md", "lg"].includes(v),
+    validator: (v) => ["xs", "sm", "md", "lg"].includes(v),
   },
+
   iconLeft: { type: String, default: "" },
   iconRight: { type: String, default: "" },
-  icon: { type: String, default: "" },
-  badge: { type: [String, Number], default: null },
-  badgeMax: { type: Number, default: 99 },
+  iconOnly: { type: Boolean, default: false },
+
   disabled: { type: Boolean, default: false },
   loading: { type: Boolean, default: false },
   block: { type: Boolean, default: false },
+  rounded: { type: String, default: "xl" },
   ariaLabel: { type: String, default: "" },
-  className: { type: [String, Array, Object], default: "" },
 });
 
-const isButton = computed(() => props.tag === "button");
-const isDisabled = computed(() => props.disabled || props.loading);
+const slots = useSlots();
+const tag = computed(() => props.as);
+const isButton = computed(() => tag.value === "button");
 
-function onClick(e) {
-  if (isDisabled.value) {
-    e.preventDefault();
-    e.stopPropagation();
-    return;
-  }
-  emit("click", e);
-}
+const hasSlotLabel = computed(() => !!slots.default);
+const hasLabel = computed(() => !props.iconOnly && hasSlotLabel.value);
 
-const formattedBadge = computed(() => {
-  if (props.badge === null || props.badge === undefined) return "";
-  const n = Number(props.badge);
-  if (Number.isFinite(n) && n > props.badgeMax) return `${props.badgeMax}+`;
-  return String(props.badge);
-});
+const hasLeftIcon = computed(() => !!props.iconLeft || !!slots.left);
+const hasRightIcon = computed(() => !!props.iconRight || !!slots.right);
 
 const computedAriaLabel = computed(() => {
-  if (props.ariaLabel) return props.ariaLabel;
-  if (props.variant === "icon") return ""; // ideal: obrigar no uso
-  return "";
+  if (props.iconOnly) return props.ariaLabel || "Action";
+  return props.ariaLabel || undefined;
 });
 
-const baseClasses =
-  "inline-flex items-center justify-center font-medium shadow-sm transition focus:outline-none focus:ring-2";
-
-const layoutClasses = computed(() => {
-  return props.variant === "icon" ? "relative" : "gap-2";
+const roundedClass = computed(() => {
+  const map = {
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    "2xl": "rounded-2xl",
+    full: "rounded-full",
+  };
+  return map[props.rounded] || "rounded-xl";
 });
 
 const sizeClass = computed(() => {
-  if (props.variant === "icon") {
-    return "h-10 w-10 rounded-xl";
-  }
+  const map = {
+    xs: props.iconOnly ? "h-8 w-8 text-xs" : "h-8 px-3 text-xs",
+    sm: props.iconOnly ? "h-9 w-9 text-sm" : "h-9 px-3.5 text-sm",
+    md: props.iconOnly ? "h-10 w-10 text-sm" : "h-10 px-4 text-sm",
+    lg: props.iconOnly ? "h-12 w-12 text-base" : "h-12 px-5 text-base",
+  };
+  return map[props.size];
+});
 
-  switch (props.size) {
-    case "sm":
-      return "h-10 rounded-xl px-4 text-sm";
-    case "lg":
-      return "h-12 rounded-2xl px-6 text-sm";
-    default:
-      return "h-12 rounded-2xl px-5 text-sm";
-  }
+const baseClass = computed(() => {
+  return [
+    "inline-flex select-none items-center justify-center gap-2",
+    "transition focus:outline-none",
+    "disabled:cursor-not-allowed disabled:opacity-60",
+    props.block ? "w-full" : "",
+    roundedClass.value,
+    sizeClass.value,
+  ]
+    .filter(Boolean)
+    .join(" ");
+});
+
+const resolvedToneIsDark = computed(() => {
+  if (props.tone === "dark") return true;
+  if (props.tone === "light") return false;
+  return true;
 });
 
 const variantClass = computed(() => {
-  switch (props.variant) {
-    case "primary":
-      return [
-        "bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white",
-        "shadow-[0_12px_28px_rgba(139,92,246,0.28)]",
-        "hover:-translate-y-0.5 hover:from-violet-400 hover:to-fuchsia-400",
-        "focus:ring-violet-400/30",
-      ].join(" ");
+  const v = props.variant;
 
-    case "glass":
-      return [
-        "border",
-        // Dark
-        "dark:border-white/10 dark:bg-white/5 dark:text-slate-200",
-        "dark:hover:border-violet-300/20 dark:hover:bg-violet-500/10 dark:hover:text-violet-200",
-        "dark:focus:ring-violet-400/30",
-        // Light
-        "border-slate-200 bg-white text-slate-700",
-        "hover:border-violet-300 hover:bg-violet-50",
-        "focus:ring-violet-200",
-      ].join(" ");
-
-    case "icon":
-      return [
-        "border",
-        "dark:border-white/10 dark:bg-white/5 dark:text-slate-200",
-        "dark:hover:border-violet-400/30 dark:hover:bg-violet-500/10 dark:hover:text-violet-200",
-        "dark:focus:ring-violet-400/30",
-        "border-slate-200 bg-white text-slate-700",
-        "hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700",
-        "focus:ring-violet-200",
-      ].join(" ");
-
-    default:
-      return "";
+  if (v === "header-toggle") {
+    return [
+      "border shadow-sm",
+      resolvedToneIsDark.value
+        ? "border-white/10 bg-white/5 text-slate-200 hover:border-violet-400/30 hover:bg-violet-500/10 focus:ring-2 focus:ring-violet-400/30"
+        : "border-slate-200 bg-white text-slate-700 hover:border-violet-300 hover:bg-violet-50 focus:ring-2 focus:ring-violet-200",
+    ].join(" ");
   }
+
+  if (v === "header-icon") {
+    return [
+      "border shadow-sm",
+      resolvedToneIsDark.value
+        ? [
+            "border-white/10 bg-white/5 text-slate-200",
+            "hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200",
+            "focus:ring-2 focus:ring-violet-400/30",
+          ].join(" ")
+        : [
+            "border-slate-200 bg-white text-slate-700", // ✅ ícone mais escuro no light
+            "hover:border-violet-300 hover:bg-violet-50 hover:text-slate-800",
+            "focus:ring-2 focus:ring-violet-200",
+          ].join(" "),
+    ].join(" ");
+  }
+
+  if (v === "header-primary") {
+    return [
+      "border-transparent text-white",
+      "bg-gradient-to-r from-violet-500 to-fuchsia-500",
+      "shadow-[0_8px_20px_rgba(139,92,246,0.25)]",
+      "hover:from-violet-400 hover:to-fuchsia-400",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "primary") {
+    return [
+      "border-transparent text-white",
+      "bg-gradient-to-r from-violet-500 to-fuchsia-500",
+      "shadow-[0_12px_28px_rgba(139,92,246,0.28)]",
+      "hover:-translate-y-0.5 hover:from-violet-400 hover:to-fuchsia-400",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "secondary") {
+    return [
+      "border shadow-sm",
+      "border-white/10 bg-white/5 text-slate-200",
+      "hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "soft") {
+    return [
+      "border shadow-sm backdrop-blur",
+      "border-white/10 bg-white/5 text-slate-200",
+      "hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "icon") {
+    return [
+      "border shadow-sm",
+      "border-white/10 bg-white/5 text-slate-200",
+      "hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-violet-200",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "outline") {
+    return [
+      "border shadow-sm bg-transparent",
+      "border-white/10 text-slate-200",
+      "hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "ghost") {
+    return [
+      "border-transparent bg-transparent shadow-none",
+      "text-slate-200",
+      "hover:bg-violet-500/10 hover:text-violet-200",
+      "focus:ring-2 focus:ring-violet-400/30",
+    ].join(" ");
+  }
+
+  if (v === "danger") {
+    return [
+      "border-transparent text-white",
+      "bg-gradient-to-r from-rose-500 to-red-500",
+      "shadow-[0_10px_24px_rgba(239,68,68,0.22)]",
+      "hover:from-rose-400 hover:to-red-400",
+      "focus:ring-2 focus:ring-red-400/30",
+    ].join(" ");
+  }
+
+  return [
+    "border-transparent bg-transparent shadow-none",
+    "px-0",
+    "text-violet-300 hover:underline",
+  ].join(" ");
 });
+
+const rootClass = computed(() => {
+  return [baseClass.value, variantClass.value, props.iconOnly ? "gap-0" : ""]
+    .filter(Boolean)
+    .join(" ");
+});
+
+const iconClass = computed(() => {
+  const map = {
+    xs: "text-[16px]",
+    sm: "text-[18px]",
+    md: "text-[20px]",
+    lg: "text-[22px]",
+  };
+  return map[props.size] || "text-[20px]";
+});
+
+const labelClass = computed(() => "font-medium");
 </script>
+
+<style scoped>
+.ck-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.95);
+  animation: ckspin 0.8s linear infinite;
+}
+.theme-light .ck-spinner {
+  border-color: rgba(15, 23, 42, 0.18);
+  border-top-color: rgba(15, 23, 42, 0.75);
+}
+@keyframes ckspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
