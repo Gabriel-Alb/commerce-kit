@@ -24,31 +24,28 @@
       />
 
       <div
-        class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-10"
+        class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.35fr_0.65fr] lg:gap-14 lg:px-8 lg:py-10"
       >
-        <!-- Hero text -->
-        <div>
+        <div class="space-y-10">
           <p
-            class="mb-4 inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-white/5 px-3 py-1 text-xs font-medium text-violet-200 shadow-sm"
+            class="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-white/5 px-3 py-1 text-xs font-medium text-violet-200 shadow-sm"
           >
             <span class="mdi mdi-star-four-points-outline text-sm" />
             New arrivals • Top-rated picks • Limited-time deals
           </p>
 
           <h1
-            class="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
+            class="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
             Upgrade your everyday tech in one place.
           </h1>
 
-          <p
-            class="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg"
-          >
+          <p class="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
             Shop headphones, wearables, keyboards, and essentials with fast
             shipping, secure checkout, and support that actually answers.
           </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
             <button
               type="button"
               class="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-3 text-sm font-medium text-white shadow-[0_12px_28px_rgba(139,92,246,0.28)] transition hover:-translate-y-0.5 hover:from-violet-400 hover:to-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
@@ -67,91 +64,27 @@
           </div>
         </div>
 
-        <!-- Hero visual -->
-        <div class="relative">
+        <div class="relative min-h-[220px] sm:min-h-[260px]">
           <div
             class="pointer-events-none absolute -left-6 -top-6 h-24 w-24 rounded-full bg-violet-500/20 blur-3xl sm:-left-8 sm:-top-8 sm:h-32 sm:w-32 lg:h-40 lg:w-40"
           />
           <div
             class="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 rounded-full bg-fuchsia-500/20 blur-3xl sm:-bottom-8 sm:-right-8 sm:h-40 sm:w-40 lg:h-48 lg:w-48"
           />
-
-          <div class="relative grid gap-4 sm:grid-cols-2 sm:gap-5">
-            <div
-              class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur sm: sm:p-5"
-            >
-              <div
-                class="aspect-[4/5] rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900"
-              />
-              <div class="mt-4">
-                <p class="text-sm font-medium text-white">Headphones Pro X</p>
-                <p class="text-sm text-slate-400">
-                  Spatial audio • Active noise cancelling
-                </p>
-                <div class="mt-3 flex items-center justify-between">
-                  <span class="text-sm font-semibold text-white">R$ 1.299</span>
-                  <button
-                    type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-                    aria-label="Add Headphones Pro X"
-                  >
-                    <span class="mdi mdi-plus text-lg" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- COLUNA DIREITA: 2 cards que "somam" a altura do vertical -->
-            <div class="grid gap-4 sm:gap-5 sm:h-full sm:grid-rows-2">
-              <div
-                class="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur sm:p-5"
-              >
-                <div
-                  class="flex-1 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900"
-                />
-                <div class="mt-4">
-                  <p class="text-sm font-medium text-white">Smartwatch One</p>
-                  <p class="text-sm text-slate-400">
-                    Health tracking • Workouts • Notifications
-                  </p>
-                  <p class="mt-2 text-sm font-semibold text-white">R$ 899</p>
-                </div>
-              </div>
-
-              <div
-                class="flex h-full flex-col justify-between rounded-3xl border border-violet-300/20 bg-gradient-to-br from-violet-600/25 to-fuchsia-600/25 p-5 text-white shadow-sm backdrop-blur sm:p-6"
-              >
-                <div>
-                  <p class="text-xs uppercase tracking-[0.16em] text-white/70">
-                    Deal of the week
-                  </p>
-                  <p class="mt-2 text-lg font-medium leading-tight">
-                    Up to 30% off selected accessories.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  class="mt-4 inline-flex items-center gap-2 self-start rounded-xl bg-white px-4 py-2 text-sm font-medium text-violet-700 transition hover:bg-violet-50 focus:outline-none focus:ring-2 focus:ring-white/30"
-                >
-                  Shop deals
-                  <span class="mdi mdi-arrow-top-right text-base" />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <!-- LOGOS / SOCIAL PROOF -->
       <section class="border-y border-white/10 bg-white/[0.02]">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
           <p
-            class="mb-4 text-center text-xs font-medium uppercase tracking-[0.14em] text-slate-400"
+            class="mb-6 text-center text-xs font-medium uppercase tracking-[0.14em] text-slate-400"
           >
             Featured brands and partners
           </p>
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+
+          <div
+            class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"
+          >
             <div
               v-for="brand in brands"
               :key="brand"
@@ -164,35 +97,84 @@
       </section>
     </section>
 
-    <section class="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <section
+      id="categories"
+      class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
+    >
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-medium text-violet-300">Categories</p>
+          <h2
+            class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+          >
+            Shop by category
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30 sm:inline-flex"
+        >
+          View all
+          <span class="mdi mdi-arrow-right text-base" />
+        </button>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article
+          v-for="category in categories"
+          :key="category.title"
+          class="group rounded-3xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-violet-300/20 hover:bg-white/[0.07] hover:shadow-md"
+        >
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-300/15 bg-violet-500/10 text-violet-200"
+          >
+            <span :class="['mdi text-2xl', category.icon]" />
+          </div>
+
+          <h3 class="text-base font-semibold tracking-tight text-white">
+            {{ category.title }}
+          </h3>
+          <p class="mt-2 text-sm leading-6 text-slate-300">
+            {{ category.description }}
+          </p>
+
+          <div class="mt-4 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-400">
+              {{ category.items }} items
+            </span>
+            <span
+              class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition group-hover:border-violet-400 group-hover:bg-violet-500 group-hover:text-white"
+            >
+              <span class="mdi mdi-arrow-right" />
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
+      id="produtos"
+      class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+    >
+      <div class="mb-8 space-y-2">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-100">
+          Products
+        </h2>
+        <p class="text-sm text-slate-300">
+          Curated picks with great value — updated weekly.
+        </p>
+      </div>
+
       <div
         class="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]"
       >
-        <div
+        <ProductCard
           v-for="(p, idx) in productRow"
-          :key="idx"
-          class="rounded-3xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur sm:p-5"
-        >
-          <div
-            class="aspect-[4/5] rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900"
-          />
-          <div class="mt-4">
-            <p class="text-sm font-medium text-white">{{ p.name }}</p>
-            <p class="text-sm text-slate-400">{{ p.desc }}</p>
-            <div class="mt-3 flex items-center justify-between">
-              <span class="text-sm font-semibold text-white">{{
-                p.price
-              }}</span>
-              <button
-                type="button"
-                class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30"
-                :aria-label="`Add ${p.name}`"
-              >
-                <span class="mdi mdi-plus text-lg" />
-              </button>
-            </div>
-          </div>
-        </div>
+          :key="p.id ?? idx"
+          :product="p"
+          @add="onAddProduct"
+        />
       </div>
     </section>
   </AppShell>
@@ -201,6 +183,7 @@
 <script setup>
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
+import ProductCard from "../components/ui/ProductCard.vue";
 
 const navItems = [
   { label: "Produtos", href: "#produtos" },
@@ -211,7 +194,35 @@ const navItems = [
 
 const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
 
-const productRow = Array.from({ length: 12 }).map(() => ({
+const categories = [
+  {
+    title: "Headphones",
+    description: "Wireless, ANC, studio and gaming models.",
+    icon: "mdi-headphones",
+    items: 128,
+  },
+  {
+    title: "Wearables",
+    description: "Smartwatches and fitness trackers for every day.",
+    icon: "mdi-watch-variant",
+    items: 64,
+  },
+  {
+    title: "Keyboards",
+    description: "Mechanical, low-profile and compact layouts.",
+    icon: "mdi-keyboard",
+    items: 42,
+  },
+  {
+    title: "Accessories",
+    description: "Chargers, hubs, cases and essential add-ons.",
+    icon: "mdi-usb",
+    items: 210,
+  },
+];
+
+const productRow = Array.from({ length: 12 }).map((_, i) => ({
+  id: i + 1,
   name: "Headphones Pro X",
   desc: "Spatial audio • Active noise cancelling",
   price: "R$ 1.299",
@@ -257,6 +268,10 @@ function onHeaderAction(action) {
   if (action.ariaLabel === "Buscar") console.log("abrir busca");
   if (action.ariaLabel === "Carrinho") console.log("abrir carrinho");
   if (action.label === "Entrar") console.log("login");
+}
+
+function onAddProduct(product) {
+  console.log("add product:", product);
 }
 </script>
 
