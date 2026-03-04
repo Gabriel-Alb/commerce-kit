@@ -97,75 +97,21 @@
       </section>
     </section>
 
-    <section
+    <!-- CATEGORIES (componentizado) -->
+    <CategoriesSection
       id="categories"
-      class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8"
-    >
-      <div class="mb-8 flex items-end justify-between gap-4">
-        <div>
-          <p class="text-sm font-medium text-violet-300">Categories</p>
-          <h2
-            class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
-          >
-            Shop by category
-          </h2>
-        </div>
-
-        <button
-          type="button"
-          class="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-sm transition hover:border-violet-300/20 hover:bg-violet-500/10 hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400/30 sm:inline-flex"
-        >
-          View all
-          <span class="mdi mdi-arrow-right text-base" />
-        </button>
-      </div>
-
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <article
-          v-for="category in categories"
-          :key="category.title"
-          class="group rounded-3xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-violet-300/20 hover:bg-white/[0.07] hover:shadow-md"
-        >
-          <div
-            class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-300/15 bg-violet-500/10 text-violet-200"
-          >
-            <span :class="['mdi text-2xl', category.icon]" />
-          </div>
-
-          <h3 class="text-base font-semibold tracking-tight text-white">
-            {{ category.title }}
-          </h3>
-          <p class="mt-2 text-sm leading-6 text-slate-300">
-            {{ category.description }}
-          </p>
-
-          <div class="mt-4 flex items-center justify-between">
-            <span class="text-xs font-medium text-slate-400">
-              {{ category.items }} items
-            </span>
-            <span
-              class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition group-hover:border-violet-400 group-hover:bg-violet-500 group-hover:text-white"
-            >
-              <span class="mdi mdi-arrow-right" />
-            </span>
-          </div>
-        </article>
-      </div>
-    </section>
+      :kicker="'Categories'"
+      :title="'Shop by category'"
+      :action="{ label: 'View all', icon: 'mdi-arrow-right' }"
+      :categories="categories"
+      @action="onCategoriesAction"
+      @select="onSelectCategory"
+    />
 
     <section
       id="produtos"
       class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
-      <div class="mb-8 space-y-2">
-        <h2 class="text-xl font-semibold tracking-tight text-slate-100">
-          Products
-        </h2>
-        <p class="text-sm text-slate-300">
-          Curated picks with great value — updated weekly.
-        </p>
-      </div>
-
       <div
         class="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]"
       >
@@ -184,6 +130,7 @@
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
+import CategoriesSection from "../components/ui/CategoriesSection.vue";
 
 const navItems = [
   { label: "Produtos", href: "#produtos" },
@@ -196,28 +143,32 @@ const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
 
 const categories = [
   {
-    title: "Headphones",
-    description: "Wireless, ANC, studio and gaming models.",
+    title: "Audio",
+    description:
+      "Headphones, speakers, and accessories for clear sound and deep bass.",
+    items: 42,
     icon: "mdi-headphones",
-    items: 128,
   },
   {
     title: "Wearables",
-    description: "Smartwatches and fitness trackers for every day.",
+    description:
+      "Smartwatches and fitness devices for health tracking and daily convenience.",
+    items: 28,
     icon: "mdi-watch-variant",
-    items: 64,
   },
   {
-    title: "Keyboards",
-    description: "Mechanical, low-profile and compact layouts.",
-    icon: "mdi-keyboard",
-    items: 42,
+    title: "Workspace",
+    description:
+      "Keyboards, mice, and desk essentials for a clean and productive setup.",
+    items: 35,
+    icon: "mdi-monitor-dashboard",
   },
   {
     title: "Accessories",
-    description: "Chargers, hubs, cases and essential add-ons.",
-    icon: "mdi-usb",
-    items: 210,
+    description:
+      "Cables, chargers, hubs, and everyday add-ons that keep you powered.",
+    items: 51,
+    icon: "mdi-briefcase-outline",
   },
 ];
 
@@ -268,6 +219,14 @@ function onHeaderAction(action) {
   if (action.ariaLabel === "Buscar") console.log("abrir busca");
   if (action.ariaLabel === "Carrinho") console.log("abrir carrinho");
   if (action.label === "Entrar") console.log("login");
+}
+
+function onCategoriesAction(action) {
+  if (action?.label === "View all") console.log("view all categories");
+}
+
+function onSelectCategory(category) {
+  console.log("select category:", category);
 }
 
 function onAddProduct(product) {
