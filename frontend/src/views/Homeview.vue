@@ -2,13 +2,7 @@
   <AppShell v-slot="{ isDark, toggleTheme }">
     <AppHeader
       :is-dark="isDark"
-      :brand="{
-        href: '#',
-        short: 'CK',
-        title: 'CommerceKit',
-        subtitle: 'premium store experience',
-        ariaLabel: 'CommerceKit - Ir para o topo',
-      }"
+      :brand="brand"
       :nav-items="navItems"
       :actions="headerActions"
       @toggle-theme="toggleTheme"
@@ -86,23 +80,22 @@
             class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"
           >
             <div
-              v-for="brand in brands"
-              :key="brand"
+              v-for="brandName in brands"
+              :key="brandName"
               class="flex h-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-sm font-medium text-slate-300 shadow-sm transition hover:border-violet-300/20 hover:text-violet-200"
             >
-              {{ brand }}
+              {{ brandName }}
             </div>
           </div>
         </div>
       </section>
     </section>
 
-    <!-- CATEGORIES (componentizado) -->
     <CategoriesSection
       id="categories"
-      :kicker="'Categories'"
-      :title="'Shop by category'"
-      :action="{ label: 'View all', icon: 'mdi-arrow-right' }"
+      :kicker="categoriesKicker"
+      :title="categoriesTitle"
+      :action="categoriesAction"
       :categories="categories"
       @action="onCategoriesAction"
       @select="onSelectCategory"
@@ -112,13 +105,24 @@
       id="produtos"
       class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
+      <!-- Título -->
+      <div class="mb-8">
+        <p class="text-sm font-medium text-violet-300">Featured</p>
+        <h2
+          class="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+        >
+          Trending now
+        </h2>
+      </div>
+
+      <!-- Cards -->
       <div
-        class="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]"
+        class="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-5"
       >
         <ProductCard
-          v-for="(p, idx) in productRow"
-          :key="p.id ?? idx"
-          :product="p"
+          v-for="(product, idx) in productRow.slice(0, 5)"
+          :key="product.id ?? idx"
+          :product="product"
           @add="onAddProduct"
         />
       </div>
@@ -129,8 +133,16 @@
 <script setup>
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
-import ProductCard from "../components/ui/ProductCard.vue";
 import CategoriesSection from "../components/ui/CategoriesSection.vue";
+import ProductCard from "../components/ui/ProductCard.vue";
+
+const brand = {
+  href: "#",
+  short: "CK",
+  title: "CommerceKit",
+  subtitle: "premium store experience",
+  ariaLabel: "CommerceKit - Ir para o topo",
+};
 
 const navItems = [
   { label: "Produtos", href: "#produtos" },
@@ -138,46 +150,6 @@ const navItems = [
   { label: "Blog", href: "#blog" },
   { label: "Contato", href: "#contato" },
 ];
-
-const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
-
-const categories = [
-  {
-    title: "Audio",
-    description:
-      "Headphones, speakers, and accessories for clear sound and deep bass.",
-    items: 42,
-    icon: "mdi-headphones",
-  },
-  {
-    title: "Wearables",
-    description:
-      "Smartwatches and fitness devices for health tracking and daily convenience.",
-    items: 28,
-    icon: "mdi-watch-variant",
-  },
-  {
-    title: "Workspace",
-    description:
-      "Keyboards, mice, and desk essentials for a clean and productive setup.",
-    items: 35,
-    icon: "mdi-monitor-dashboard",
-  },
-  {
-    title: "Accessories",
-    description:
-      "Cables, chargers, hubs, and everyday add-ons that keep you powered.",
-    items: 51,
-    icon: "mdi-briefcase-outline",
-  },
-];
-
-const productRow = Array.from({ length: 12 }).map((_, i) => ({
-  id: i + 1,
-  name: "Headphones Pro X",
-  desc: "Spatial audio • Active noise cancelling",
-  price: "R$ 1.299",
-}));
 
 const headerActions = [
   {
@@ -215,10 +187,53 @@ const headerActions = [
   },
 ];
 
+const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
+const categoriesKicker = "Categories";
+const categoriesTitle = "Shop by category";
+const categoriesAction = { label: "View all", icon: "mdi-arrow-right" };
+
+const categories = [
+  {
+    title: "Audio",
+    description:
+      "Headphones, speakers, and accessories for clear sound and deep bass.",
+    items: 42,
+    icon: "mdi-headphones",
+  },
+  {
+    title: "Wearables",
+    description:
+      "Smartwatches and fitness devices for health tracking and daily convenience.",
+    items: 28,
+    icon: "mdi-watch-variant",
+  },
+  {
+    title: "Workspace",
+    description:
+      "Keyboards, mice, and desk essentials for a clean and productive setup.",
+    items: 35,
+    icon: "mdi-monitor-dashboard",
+  },
+  {
+    title: "Accessories",
+    description:
+      "Cables, chargers, hubs, and everyday add-ons that keep you powered.",
+    items: 51,
+    icon: "mdi-briefcase-outline",
+  },
+];
+
+const productRow = Array.from({ length: 12 }, (_, i) => ({
+  id: i + 1,
+  name: "Headphones Pro X",
+  desc: "Spatial audio • Active noise cancelling",
+  price: "R$ 1.299",
+}));
+
 function onHeaderAction(action) {
-  if (action.ariaLabel === "Buscar") console.log("abrir busca");
-  if (action.ariaLabel === "Carrinho") console.log("abrir carrinho");
-  if (action.label === "Entrar") console.log("login");
+  if (action?.ariaLabel === "Buscar") console.log("abrir busca");
+  if (action?.ariaLabel === "Carrinho") console.log("abrir carrinho");
+  if (action?.label === "Entrar") console.log("login");
 }
 
 function onCategoriesAction(action) {
@@ -233,5 +248,3 @@ function onAddProduct(product) {
   console.log("add product:", product);
 }
 </script>
-
-<style scoped></style>
