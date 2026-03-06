@@ -167,7 +167,7 @@ const variantClass = computed(() => {
             "focus:ring-2 focus:ring-violet-400/30",
           ].join(" ")
         : [
-            "border-slate-200 bg-white text-slate-700", // ✅ ícone mais escuro no light
+            "border-slate-200 bg-white text-slate-700",
             "hover:border-violet-300 hover:bg-violet-50 hover:text-slate-800",
             "focus:ring-2 focus:ring-violet-200",
           ].join(" "),

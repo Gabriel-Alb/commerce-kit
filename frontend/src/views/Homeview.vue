@@ -105,7 +105,6 @@
       id="produtos"
       class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
-      <!-- Título -->
       <div class="mb-8">
         <p class="text-sm font-medium text-violet-300">Featured</p>
         <h2
@@ -115,9 +114,8 @@
         </h2>
       </div>
 
-      <!-- Cards -->
       <div
-        class="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-5"
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-5"
       >
         <ProductCard
           v-for="(product, idx) in productRow.slice(0, 5)"
@@ -127,6 +125,16 @@
         />
       </div>
     </section>
+
+    <FeatureSplitSection
+      section-id="new"
+      :main-card="featureMainCard"
+      :top-cards="featureTopCards"
+      :bottom-card="featureBottomCard"
+      @primary-click="onFeaturePrimaryClick"
+      @secondary-click="onFeatureSecondaryClick"
+      @bottom-action-click="onFeatureBottomActionClick"
+    />
   </AppShell>
 </template>
 
@@ -135,6 +143,7 @@ import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
 import CategoriesSection from "../components/ui/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
+import FeatureSplitSection from"../components/ui/FeatureSplitSection.vue"
 
 const brand = {
   href: "#",
@@ -188,6 +197,7 @@ const headerActions = [
 ];
 
 const brands = ["NOVA", "LUMA", "ATLAS", "ORBIT", "MODU", "AUREA"];
+
 const categoriesKicker = "Categories";
 const categoriesTitle = "Shop by category";
 const categoriesAction = { label: "View all", icon: "mdi-arrow-right" };
@@ -230,6 +240,66 @@ const productRow = Array.from({ length: 12 }, (_, i) => ({
   price: "R$ 1.299",
 }));
 
+const featureMainCard = {
+  eyebrow: "Curated picks",
+  title: "Premium gear, built for real life.",
+  description:
+    "Thoughtfully selected electronics with reliable build quality and modern design—made for work, travel, and everything in between.",
+  items: [
+    {
+      text: "Trusted picks focused on durability and performance.",
+      icon: "mdi mdi-check-circle-outline",
+    },
+    {
+      text: "Fast, mobile-first checkout with secure payments.",
+      icon: "mdi mdi-check-circle-outline",
+    },
+    {
+      text: "Dedicated support before and after your purchase.",
+      icon: "mdi mdi-check-circle-outline",
+    },
+  ],
+  primaryAction: {
+    label: "Shop now",
+    icon: "mdi mdi-arrow-right",
+  },
+  secondaryAction: {
+    label: "Learn more",
+    icon: "mdi mdi-information-outline",
+  },
+};
+
+const featureTopCards = [
+  {
+    eyebrow: "Shipping",
+    title: "Express",
+    description:
+      "Fast delivery to selected regions with real-time tracking updates.",
+    variant: "highlight",
+    placeholderClass: "mt-6 h-32 rounded-2xl border border-white/10 bg-white/5",
+  },
+  {
+    eyebrow: "Payments",
+    title: "Flexible",
+    description:
+      "PIX, cards, boleto, and installment options where available.",
+    variant: "default",
+    placeholderClass:
+      "mt-6 h-32 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900",
+  },
+];
+
+const featureBottomCard = {
+  eyebrow: "Member benefit",
+  title: "Early access to drops and deals",
+  description:
+    "Get notified about launches, seasonal offers, and limited releases before they go public.",
+  action: {
+    label: "Join the list",
+    icon: "mdi mdi-email-outline",
+  },
+};
+
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
   if (action?.ariaLabel === "Carrinho") console.log("abrir carrinho");
@@ -246,5 +316,17 @@ function onSelectCategory(category) {
 
 function onAddProduct(product) {
   console.log("add product:", product);
+}
+
+function onFeaturePrimaryClick(action) {
+  console.log("feature primary action:", action);
+}
+
+function onFeatureSecondaryClick(action) {
+  console.log("feature secondary action:", action);
+}
+
+function onFeatureBottomActionClick(action) {
+  console.log("feature bottom action:", action);
 }
 </script>
