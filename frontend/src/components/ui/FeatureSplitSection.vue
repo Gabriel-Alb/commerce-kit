@@ -38,9 +38,9 @@
 </template>
 
 <script setup>
-import FeatureMainCard from "./feature-split/FeatureMainCard.vue";
-import FeatureInfoCard from "./feature-split/FeatureInfoCard.vue";
-import FeatureWideCard from "./feature-split/FeatureWideCard.vue";
+import FeatureMainCard from "../ui/FeatureMainCard.vue"
+import FeatureInfoCard from "../ui/FeatureInfoCard.vue";
+import FeatureWideCard from "../ui/FeatureWideCard.vue";
 
 defineProps({
   sectionId: {
