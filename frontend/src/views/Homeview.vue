@@ -135,6 +135,22 @@
       @secondary-click="onFeatureSecondaryClick"
       @bottom-action-click="onFeatureBottomActionClick"
     />
+
+    <TestimonialsSection
+      :eyebrow="testimonialsEyebrow"
+      :title="testimonialsTitle"
+      :testimonials="testimonials"
+    />
+
+    <NewsletterSection
+      :eyebrow="newsletterEyebrow"
+      :title="newsletterTitle"
+      :description="newsletterDescription"
+      :placeholder="newsletterPlaceholder"
+      :button-label="newsletterButtonLabel"
+      :disclaimer="newsletterDisclaimer"
+      @submit="handleNewsletterSubmit"
+    />
   </AppShell>
 </template>
 
@@ -143,7 +159,9 @@ import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
 import CategoriesSection from "../components/ui/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
-import FeatureSplitSection from"../components/ui/FeatureSplitSection.vue"
+import FeatureSplitSection from "../components/ui/FeatureSplitSection.vue";
+import TestimonialsSection from "../components/ui/TestimonialsSection.vue";
+import NewsletterSection from "../components/ui/NewsletterSection.vue";
 
 const brand = {
   href: "#",
@@ -281,8 +299,7 @@ const featureTopCards = [
   {
     eyebrow: "Payments",
     title: "Flexible",
-    description:
-      "PIX, cards, boleto, and installment options where available.",
+    description: "PIX, cards, boleto, and installment options where available.",
     variant: "default",
     placeholderClass:
       "mt-6 h-32 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900",
@@ -299,6 +316,39 @@ const featureBottomCard = {
     icon: "mdi mdi-email-outline",
   },
 };
+
+const testimonialsEyebrow = "Reviews";
+const testimonialsTitle = "What customers say";
+
+const testimonials = [
+  {
+    name: "Daniel Foster",
+    role: "Verified Customer",
+    comment:
+      "Amazing sound quality and fast delivery. The headphones exceeded my expectations.",
+  },
+  {
+    name: "Olivia Bennett",
+    role: "Tech Enthusiast",
+    comment:
+      "Great customer service and premium build quality. I’ll definitely buy again.",
+  },
+  {
+    name: "Marcus Chen",
+    role: "Content Creator",
+    comment:
+      "Perfect gear for my workspace. Clean design and excellent performance.",
+  },
+];
+
+const newsletterEyebrow = "Newsletter";
+const newsletterTitle = "Get updates and member-only offers.";
+const newsletterDescription =
+  "Subscribe for new releases, deal alerts, and curated product picks across audio, wearables, and workspace essentials.";
+const newsletterPlaceholder = "Your email address";
+const newsletterButtonLabel = "Subscribe";
+const newsletterDisclaimer =
+  "By subscribing, you agree to our privacy policy and promotional communications.";
 
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
@@ -328,5 +378,9 @@ function onFeatureSecondaryClick(action) {
 
 function onFeatureBottomActionClick(action) {
   console.log("feature bottom action:", action);
+}
+
+function handleNewsletterSubmit(email) {
+  console.log("newsletter submit:", email);
 }
 </script>
