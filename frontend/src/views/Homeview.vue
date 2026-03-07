@@ -135,6 +135,12 @@
       @secondary-click="onFeatureSecondaryClick"
       @bottom-action-click="onFeatureBottomActionClick"
     />
+
+    <TestimonialsSection
+      :eyebrow="testimonialsEyebrow"
+      :title="testimonialsTitle"
+      :testimonials="testimonials"
+    />
   </AppShell>
 </template>
 
@@ -143,7 +149,8 @@ import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
 import CategoriesSection from "../components/ui/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
-import FeatureSplitSection from"../components/ui/FeatureSplitSection.vue"
+import FeatureSplitSection from "../components/ui/FeatureSplitSection.vue";
+import TestimonialsSection from "../components/ui/TestimonialsSection.vue";
 
 const brand = {
   href: "#",
@@ -299,6 +306,30 @@ const featureBottomCard = {
     icon: "mdi mdi-email-outline",
   },
 };
+
+const testimonialsEyebrow = "Reviews";
+const testimonialsTitle = "What customers say";
+
+const testimonials = [
+  {
+    name: "Daniel Foster",
+    role: "Verified Customer",
+    comment:
+      "Amazing sound quality and fast delivery. The headphones exceeded my expectations.",
+  },
+  {
+    name: "Olivia Bennett",
+    role: "Tech Enthusiast",
+    comment:
+      "Great customer service and premium build quality. I’ll definitely buy again.",
+  },
+  {
+    name: "Marcus Chen",
+    role: "Content Creator",
+    comment:
+      "Perfect gear for my workspace. Clean design and excellent performance.",
+  },
+];
 
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
