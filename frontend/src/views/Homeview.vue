@@ -141,6 +141,16 @@
       :title="testimonialsTitle"
       :testimonials="testimonials"
     />
+
+    <NewsletterSection
+      :eyebrow="newsletterEyebrow"
+      :title="newsletterTitle"
+      :description="newsletterDescription"
+      :placeholder="newsletterPlaceholder"
+      :button-label="newsletterButtonLabel"
+      :disclaimer="newsletterDisclaimer"
+      @submit="handleNewsletterSubmit"
+    />
   </AppShell>
 </template>
 
@@ -151,6 +161,7 @@ import CategoriesSection from "../components/ui/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
 import FeatureSplitSection from "../components/ui/FeatureSplitSection.vue";
 import TestimonialsSection from "../components/ui/TestimonialsSection.vue";
+import NewsletterSection from "../components/ui/NewsletterSection.vue";
 
 const brand = {
   href: "#",
@@ -288,8 +299,7 @@ const featureTopCards = [
   {
     eyebrow: "Payments",
     title: "Flexible",
-    description:
-      "PIX, cards, boleto, and installment options where available.",
+    description: "PIX, cards, boleto, and installment options where available.",
     variant: "default",
     placeholderClass:
       "mt-6 h-32 rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900",
@@ -331,6 +341,15 @@ const testimonials = [
   },
 ];
 
+const newsletterEyebrow = "Newsletter";
+const newsletterTitle = "Get updates and member-only offers.";
+const newsletterDescription =
+  "Subscribe for new releases, deal alerts, and curated product picks across audio, wearables, and workspace essentials.";
+const newsletterPlaceholder = "Your email address";
+const newsletterButtonLabel = "Subscribe";
+const newsletterDisclaimer =
+  "By subscribing, you agree to our privacy policy and promotional communications.";
+
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
   if (action?.ariaLabel === "Carrinho") console.log("abrir carrinho");
@@ -359,5 +378,9 @@ function onFeatureSecondaryClick(action) {
 
 function onFeatureBottomActionClick(action) {
   console.log("feature bottom action:", action);
+}
+
+function handleNewsletterSubmit(email) {
+  console.log("newsletter submit:", email);
 }
 </script>
