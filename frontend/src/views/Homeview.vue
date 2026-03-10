@@ -151,12 +151,21 @@
       :disclaimer="newsletterDisclaimer"
       @submit="handleNewsletterSubmit"
     />
+
+    <AppFooter
+      :brand="footerBrand"
+      :description="footerDescription"
+      :sections="footerSections"
+      :social-links="footerSocialLinks"
+      :copyright="footerCopyright"
+    />
   </AppShell>
 </template>
 
 <script setup>
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
+import AppFooter from "../components/layout/AppFooter.vue";
 import CategoriesSection from "../components/ui/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
 import FeatureSplitSection from "../components/ui/FeatureSplitSection.vue";
@@ -349,6 +358,67 @@ const newsletterPlaceholder = "Your email address";
 const newsletterButtonLabel = "Subscribe";
 const newsletterDisclaimer =
   "By subscribing, you agree to our privacy policy and promotional communications.";
+
+const footerBrand = {
+  href: "#",
+  short: "CK",
+  title: "CommerceKit",
+  subtitle: "consumer electronics store",
+  ariaLabel: "CommerceKit - Ir para o topo",
+};
+
+const footerDescription =
+  "Electronics made easy: curated products, secure checkout, and fast shipping—built for everyday use.";
+
+const footerSections = [
+  {
+    title: "Shop",
+    links: [
+      { label: "New arrivals", href: "#" },
+      { label: "Best sellers", href: "#" },
+      { label: "Collections", href: "#" },
+      { label: "Deals", href: "#" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Help Center", href: "#" },
+      { label: "Returns & exchanges", href: "#" },
+      { label: "Shipping", href: "#" },
+      { label: "Contact", href: "#" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "#" },
+      { label: "Careers", href: "#" },
+      { label: "Privacy", href: "#" },
+      { label: "Terms", href: "#" },
+    ],
+  },
+];
+
+const footerSocialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/gabriel_albu__/",
+    target: "_blank",
+  },
+  {
+    label: "Behance",
+    href: "https://www.behance.net/gabrielalbuque126",
+    target: "_blank",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/gabriel-albuquerque-0b0666221/",
+    target: "_blank",
+  },
+];
+
+const footerCopyright = "© 2026 CommerceKit. All rights reserved.";
 
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
