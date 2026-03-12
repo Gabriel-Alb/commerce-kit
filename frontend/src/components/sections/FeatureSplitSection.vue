@@ -1,7 +1,7 @@
 <template>
   <section :id="sectionId" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="grid gap-6 lg:grid-cols-2">
-      <FeatureMainCard
+      <FeaturePrimaryCard
         :eyebrow="mainCard.eyebrow"
         :title="mainCard.title"
         :description="mainCard.description"
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import FeatureMainCard from "../ui/FeatureMainCard.vue"
+import FeaturePrimaryCard from "../ui/FeaturePrimaryCard.vue";
 import FeatureInfoCard from "../ui/FeatureInfoCard.vue";
 import FeatureWideCard from "../ui/FeatureWideCard.vue";
 

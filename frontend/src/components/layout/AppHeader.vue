@@ -49,32 +49,8 @@
       <div class="flex items-center gap-2">
         <slot name="actions" :actions="orderedDesktopActions" :ui="ui">
           <template v-for="action in orderedDesktopActions" :key="action.id">
-            <CkButton
-              v-if="action.type === 'theme-toggle'"
-              variant="header-toggle"
-              :tone="isDark ? 'dark' : 'light'"
-              size="md"
-              :icon-left="isDark ? action.iconDark : action.iconLight"
-              :aria-label="
-                isDark
-                  ? (action.ariaLabelLight ?? 'Switch to light theme')
-                  : (action.ariaLabelDark ?? 'Switch to dark theme')
-              "
-              class="h-10 rounded-xl px-3 md:px-3 max-md:w-10 max-md:px-0"
-              :iconOnly="false"
-              @click="emit('toggle-theme')"
-            >
-              <span class="hidden md:inline">
-                {{
-                  isDark
-                    ? (action.labelLight ?? "Light")
-                    : (action.labelDark ?? "Dark")
-                }}
-              </span>
-            </CkButton>
-
-            <CkButton
-              v-else-if="action.type === 'icon'"
+            <BaseButton
+              v-if="action.type === 'icon'"
               variant="header-icon"
               :tone="isDark ? 'dark' : 'light'"
               size="md"
@@ -93,9 +69,9 @@
               >
                 {{ action.badge }}
               </span>
-            </CkButton>
+            </BaseButton>
 
-            <CkButton
+            <BaseButton
               v-else-if="action.type === 'button'"
               :variant="action.variant || 'primary'"
               :size="action.size || 'md'"
@@ -107,11 +83,11 @@
               @click="emit('action', action)"
             >
               {{ action.label }}
-            </CkButton>
+            </BaseButton>
           </template>
         </slot>
 
-        <CkButton
+        <BaseButton
           variant="header-icon"
           :tone="isDark ? 'dark' : 'light'"
           size="md"
@@ -131,7 +107,7 @@
               ]"
             />
           </template>
-        </CkButton>
+        </BaseButton>
       </div>
     </div>
 
@@ -157,7 +133,7 @@
 
         <div v-if="mobileMenuActions.length" class="mt-2 space-y-2">
           <template v-for="action in mobileMenuActions" :key="`m-${action.id}`">
-            <CkButton
+            <BaseButton
               v-if="action.type === 'button'"
               :variant="action.variant || 'primary'"
               :size="action.size || 'md'"
@@ -168,9 +144,9 @@
               @click="onMobileActionClick(action)"
             >
               {{ action.label }}
-            </CkButton>
+            </BaseButton>
 
-            <CkButton
+            <BaseButton
               v-else-if="action.type === 'icon'"
               :variant="action.label ? 'soft' : 'icon'"
               size="md"
@@ -185,9 +161,9 @@
               </template>
 
               {{ action.label || action.ariaLabel }}
-            </CkButton>
+            </BaseButton>
 
-            <CkButton
+            <BaseButton
               v-else-if="action.type === 'theme-toggle'"
               variant="soft"
               size="md"
@@ -205,7 +181,7 @@
                   ? (action.labelLight ?? "Light")
                   : (action.labelDark ?? "Dark")
               }}
-            </CkButton>
+            </BaseButton>
           </template>
         </div>
       </nav>
@@ -215,7 +191,7 @@
 
 <script setup>
 import { computed, ref, watch } from "vue";
-import CkButton from "../ui/CkButton.vue";
+import BaseButton from "../ui/BaseButton.vue";
 
 const emit = defineEmits(["toggle-theme", "nav-click", "action"]);
 
