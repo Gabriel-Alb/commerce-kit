@@ -166,11 +166,11 @@
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppShell from "../components/layout/AppShell.vue";
 import AppFooter from "../components/layout/AppFooter.vue";
-import CategoriesSection from "../components/ui/CategoriesSection.vue";
+import CategoriesSection from "../components/sections/CategoriesSection.vue";
 import ProductCard from "../components/ui/ProductCard.vue";
-import FeatureSplitSection from "../components/ui/FeatureSplitSection.vue";
-import TestimonialsSection from "../components/ui/TestimonialsSection.vue";
-import NewsletterSection from "../components/ui/NewsletterSection.vue";
+import FeatureSplitSection from "../components/sections/FeatureSplitSection.vue";
+import TestimonialsSection from "../components/sections/TestimonialsSection.vue";
+import NewsletterSection from "../components/sections/NewsletterSection.vue";
 
 const brand = {
   href: "#",
