@@ -177,14 +177,14 @@ const brand = {
   short: "CK",
   title: "CommerceKit",
   subtitle: "premium store experience",
-  ariaLabel: "CommerceKit - Ir para o topo",
+  ariaLabel: "CommerceKit - Go to top",
 };
 
 const navItems = [
-  { label: "Produtos", href: "#produtos" },
-  { label: "Ofertas", href: "#ofertas" },
+  { label: "Products", href: "#produtos" },
+  { label: "Deals", href: "#ofertas" },
   { label: "Blog", href: "#blog" },
-  { label: "Contato", href: "#contato" },
+  { label: "Contact", href: "#contato" },
 ];
 
 const headerActions = [
@@ -194,26 +194,26 @@ const headerActions = [
     iconLight: "mdi-weather-night",
     labelLight: "Light",
     labelDark: "Dark",
-    ariaLabelLight: "Ativar tema claro",
-    ariaLabelDark: "Ativar tema escuro",
+    ariaLabelLight: "Enable light theme",
+    ariaLabelDark: "Enable dark theme",
     showOn: "both",
   },
   {
     type: "icon",
     icon: "mdi-magnify",
-    ariaLabel: "Buscar",
+    ariaLabel: "Search",
     showOn: "both",
   },
   {
     type: "icon",
     icon: "mdi-cart-outline",
-    ariaLabel: "Carrinho",
+    ariaLabel: "Cart",
     badge: 2,
     showOn: "both",
   },
   {
     type: "button",
-    label: "Entrar",
+    label: "Sign in",
     variant: "primary",
     size: "sm",
     className:
@@ -418,7 +418,7 @@ const footerSocialLinks = [
   },
 ];
 
-const footerCopyright = "© 2026 CommerceKit. All rights reserved.";
+const footerCopyright = "✦ Created by Gabriel Albuquerque Silva.";
 
 function onHeaderAction(action) {
   if (action?.ariaLabel === "Buscar") console.log("abrir busca");
