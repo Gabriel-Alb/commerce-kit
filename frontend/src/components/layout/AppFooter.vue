@@ -115,7 +115,7 @@ const props = defineProps({
 
   copyright: {
     type: String,
-    default: "© 2026. All rights reserved.",
+    default: "",
   },
 
   socialLinks: {
